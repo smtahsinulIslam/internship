@@ -1,0 +1,25 @@
+<div class="jumbotron">
+  <h1 class="display-4">
+    <%= @sgang.first_name %>
+    <%= @sgang.last_name %>
+  </h1>
+  <p class="lead">      
+      <%= @sgang.phone %>  | 
+      
+      <%= @sgang.facebook %> 
+  </p>
+  <hr>
+
+<div>
+  <%= link_to "Edit this member", edit_sgang_path(@sgang), class:"btn btn-secondary" %> 
+  <%= link_to "Back to list", sgangs_path, class:"btn btn-secondary" %>
+<br><br>
+  <%= button_to "Destroy this member", 
+  @sgang, 
+  method: :delete, 
+  data: { confirm: "Are you sure?" },
+  class:"btn btn-danger" %>
+</div>
+</div>
+
+
