@@ -10,9 +10,8 @@
     <%= link_to "Edit", edit_sgang_path(sgang), class: "btn btn-sm btn-outline-primary" %>
   </td>
   <td>
-    <%= link_to "Destroy", @sgang,
-        method: :delete,
-        data: { confirm: "Are you sure?" },
-        class: "btn btn-sm btn-outline-danger" %>
-  </td>
+  <%= link_to "Destroy", sgang,
+      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+      class: "btn btn-sm btn-outline-danger" %>
+</td>
 </tr>

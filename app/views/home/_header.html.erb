@@ -12,19 +12,54 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+
         <li class="nav-item active">
-            <a class="nav-link" href=<%=home_about_path %>>About us</a>
+            <%= link_to "About us", 
+            home_about_path, 
+            class:"nav-link"%>
         </li>
 
         <li class="nav-item active">
-            <a class="nav-link" href=<%=sgangs_path %>>Savage Member</a>
+            <%= link_to "Savage Member", 
+            sgangs_path, 
+            class:"nav-link"%>
         </li>
 
         <li class="nav-item active">
-            <a class="nav-link" href=<%=new_sgang_path %>>Add New Member</a>
+            <%= link_to "Add Member", 
+            new_sgang_path, 
+            class:"nav-link"%>
         </li>
-      
+
+        <% if user_signed_in? %>
+            <li class="nav-item active">
+                <%= link_to "Sign out", 
+                destroy_user_session_path, 
+                data: { turbo_method: :delete }, 
+                class: "nav-link" %>
+            </li>
+
+            <li class="nav-item active">
+                <%= link_to "Edit Profile", 
+                edit_user_registration_path, 
+                class:"nav-link"%>
+            </li>
         
+
+        <%else%>
+            <li class="nav-item active">
+                <%= link_to "Sign up", 
+                new_user_registration_path, 
+                class:"nav-link"%>
+            </li>
+
+            <li class="nav-item active">
+                <%= link_to "Sign in", 
+                new_user_session_path, 
+                class:"nav-link"%>
+            </li>
+
+        <%end%>
       
     </ul>
     <form class="form-inline my-2 my-lg-0">
