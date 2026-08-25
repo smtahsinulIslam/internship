@@ -1,5 +1,12 @@
-<h2>Forgot your password?</h2>
+<div class="text-center text-white" 
+     style="margin-top: 20px; 
+     margin-bottom: 20px border: 1px solid #ccc; 
+     padding: 20px; 
+     border-radius: 5px; 
+     background-color: #343a40;">
 
+<h2>Forgot your password?</h2>
+<hr>
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -9,8 +16,9 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me password reset instructions" %>
+    <%= f.submit "Send me password reset instructions", class:"btn btn-primary" %>
   </div>
 <% end %>
-
+<br>
 <%= render "devise/shared/links" %>
+</div>

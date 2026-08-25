@@ -1,7 +1,8 @@
 <%= form_with(model: sgang) do |form| %>
   <% if sgang.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(sgang.errors.count, "error") %> prohibited this member from being saved:</h2>
+      <h2><%= pluralize(sgang.errors.count, "error") %> 
+      prohibited this member from being saved:</h2>
 
       <ul>
         <% sgang.errors.each do |error| %>
@@ -12,26 +13,43 @@
   <% end %>
 
   <div>
-    <strong><%= form.label :first_name, style: "display: block" %></strong>
-    <%= form.text_field :first_name, placeholder:"Your first name" %>
+    <strong><%= form.label :first_name, 
+    style: "display: block" %></strong>
+    <%= form.text_field :first_name, 
+    placeholder:"Your first name" %>
   </div>
 
   <div>
-    <strong><%= form.label :last_name, style: "display: block" %></strong>
-    <%= form.text_field :last_name, placeholder:"Your last name" %>
+    <strong><%= form.label :last_name, 
+    style: "display: block" %></strong>
+    <%= form.text_field :last_name, 
+    placeholder:"Your last name" %>
   </div>
 
   <div>
-    <strong><%= form.label :phone, style: "display: block" %></strong>
-    <%= form.text_field :phone, placeholder:"+8801#########" %>
+    <strong><%= form.label :phone, 
+    style: "display: block" %></strong>
+    <%= form.text_field :phone, 
+    placeholder:"01#########" %>
   </div>
 
   <div>
-    <strong><%= form.label :facebook, style: "display: block" %></strong>
-    <%= form.text_field :facebook, placeholder:"Name.facebook.com" %>
+    <strong><%= form.label :facebook, 
+    style: "display: block" %></strong>
+    <%= form.text_field :facebook, 
+    placeholder:"Name.facebook.com" %>
   </div>
+  
+  <div>
+    <%= form.number_field :user_id, 
+    id: :sgang_user_id, 
+    value: current_user.id, 
+    type: :hidden %>
+  </div>
+
   <br>
   <div>
-    <%= form.submit "Save to Gang", class: "btn btn-success" %>
+    <%= form.submit "Save to Gang", 
+    class: "btn btn-success" %>
   </div>
 <% end %>

@@ -1,5 +1,7 @@
 class SgangsController < ApplicationController
   before_action :set_sgang, only: %i[ show edit update destroy ]
+  before_action :correct_user, only: [ :edit, :update, :destroy ]
+
 
   # GET /sgangs or /sgangs.json
   def index
@@ -12,7 +14,8 @@ class SgangsController < ApplicationController
 
   # GET /sgangs/new
   def new
-    @sgang = Sgang.new
+    # @sgang = Sgang.new
+    @sgang = current_user.sgang.build
   end
 
   # GET /sgangs/1/edit
@@ -21,7 +24,8 @@ class SgangsController < ApplicationController
 
   # POST /sgangs or /sgangs.json
   def create
-    @sgang = Sgang.new(sgang_params)
+    # @sgang = Sgang.new(sgang_params)
+    @sgang = current_user.sgang.build(sgang_params)
 
     respond_to do |format|
       if @sgang.save
@@ -57,6 +61,13 @@ class SgangsController < ApplicationController
     end
   end
 
+  def correct_user
+    @sgang = current_user.sgangs.find_by(id: params[:id])
+
+    redirect_to sgangs_path, notice: "Not Authorized To Edit This Member" if @sgang.nil?
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sgang
@@ -65,6 +76,6 @@ class SgangsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sgang_params
-      params.expect(sgang: [ :first_name, :last_name, :phone, :facebook ])
+      params.expect(sgang: [ :first_name, :last_name, :phone, :facebook, :user_id ])
     end
 end

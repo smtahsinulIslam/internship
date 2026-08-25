@@ -1,17 +1,23 @@
+
+
 <tr class="text-center" id="<%= dom_id sgang %>">
   <td><%= sgang.first_name %></td>
   <td><%= sgang.last_name %></td>
   <td><%= sgang.phone %></td>
   <td><%= sgang.facebook %></td>
+  <td><%= sgang.user_id %></td>
   <td>
     <%= link_to "Show", sgang, class: "btn btn-sm btn-outline-success" %>
   </td>
-  <td>
-    <%= link_to "Edit", edit_sgang_path(sgang), class: "btn btn-sm btn-outline-primary" %>
-  </td>
-  <td>
-  <%= link_to "Destroy", sgang,
-      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-      class: "btn btn-sm btn-outline-danger" %>
-</td>
+  <% if user_signed_in? %>
+    <td>
+      <%= link_to "Edit", edit_sgang_path(sgang), class: "btn btn-sm btn-outline-primary" %>
+    </td>
+    <td>
+    <%= link_to "Destroy", sgang,
+        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+        class: "btn btn-sm btn-outline-danger" %>
+    </td>
+    
+<% end %>
 </tr>

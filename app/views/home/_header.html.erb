@@ -1,14 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href=<%= root_path %>>Savage Gang</a>
-  <button class="navbar-toggler" 
-          type="button" 
-          data-toggle="collapse" 
-          data-target="#navbarSupportedContent" 
-          aria-controls="navbarSupportedContent" 
-          aria-expanded="false" 
-          aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <a class="navbar-brand" href=<%= root_path %>>Savage Gang</a>
+    <button class="navbar-toggler" 
+            type="button" 
+            data-toggle="collapse" 
+            data-target="#navbarSupportedContent" 
+            aria-controls="navbarSupportedContent" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -25,18 +25,12 @@
             class:"nav-link"%>
         </li>
 
-        <li class="nav-item active">
-            <%= link_to "Add Member", 
-            new_sgang_path, 
-            class:"nav-link"%>
-        </li>
-
         <% if user_signed_in? %>
+
             <li class="nav-item active">
-                <%= link_to "Sign out", 
-                destroy_user_session_path, 
-                data: { turbo_method: :delete }, 
-                class: "nav-link" %>
+                <%= link_to "Add Member", 
+                new_sgang_path, 
+                class:"nav-link"%>
             </li>
 
             <li class="nav-item active">
@@ -44,7 +38,13 @@
                 edit_user_registration_path, 
                 class:"nav-link"%>
             </li>
-        
+
+            <li class="nav-item active">
+                <%= link_to "Sign out", 
+                destroy_user_session_path, 
+                data: { turbo_method: :delete }, 
+                class: "nav-link btn btn-sm btn-outline-danger" %>
+            </li>
 
         <%else%>
             <li class="nav-item active">
@@ -58,7 +58,6 @@
                 new_user_session_path, 
                 class:"nav-link"%>
             </li>
-
         <%end%>
       
     </ul>

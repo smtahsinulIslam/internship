@@ -11,14 +11,20 @@
   <hr>
 
 <div>
-  <%= link_to "Edit this member", edit_sgang_path(@sgang), class:"btn btn-secondary" %> 
+  <% if user_signed_in? %>
+    <%= link_to "Edit this member", edit_sgang_path(@sgang), class:"btn btn-secondary" %> 
+  <% end %>
+
   <%= link_to "Back to list", sgangs_path, class:"btn btn-secondary" %>
 <br><br>
+<% if user_signed_in? %>
   <%= button_to "Destroy this member", 
   @sgang, 
   method: :delete, 
   data: { turbo_confirm: "Are you sure?" },
   class:"btn btn-danger" %>
+<% end %>
+
 </div>
 </div>
 
