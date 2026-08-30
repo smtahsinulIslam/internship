@@ -80,3 +80,5 @@ class SgangsController < ApplicationController
       params.expect(sgang: [ :first_name, :last_name, :phone, :facebook, :user_id ])
     end
 end
+
+# 3:37
