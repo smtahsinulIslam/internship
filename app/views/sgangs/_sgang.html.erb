@@ -1,9 +1,9 @@
 <tr class="text-center" id="<%= dom_id sgang %>">
   <td>
-    <%= link_to sgang.first_name + " " + sgang.last_name, sgang %>
+      <%= (@sgangs.current_page - 1) * @sgangs.limit_value + index + 1 %>
   </td>
   <td>
-    <%= sgang.first_name %>
+    <%= link_to sgang.first_name + " " + sgang.last_name, sgang %>
   </td>
   <td>
     <%= sgang.phone %>

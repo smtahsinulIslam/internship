@@ -33,6 +33,7 @@ gem "bootsnap", require: false
 
 # extra manual added
 gem "devise", ">= 5.0.4"
+gem "kaminari", ">= 1.2.2"
 
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
 gem "kamal", require: false

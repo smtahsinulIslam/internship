@@ -6,7 +6,7 @@ class SgangsController < ApplicationController
 
   # GET /sgangs or /sgangs.json
   def index
-    @sgangs = Sgang.all
+    @sgangs = Sgang.page(params[:page])
   end
 
   # GET /sgangs/1 or /sgangs/1.json
