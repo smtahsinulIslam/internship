@@ -1,5 +1,6 @@
 class SgangsController < ApplicationController
   before_action :set_sgang, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [ :index, :show ]
   before_action :correct_user, only: [ :edit, :update, :destroy ]
 
 
@@ -15,7 +16,7 @@ class SgangsController < ApplicationController
   # GET /sgangs/new
   def new
     # @sgang = Sgang.new
-    @sgang = current_user.sgang.build
+    @sgang = current_user.sgangs.build
   end
 
   # GET /sgangs/1/edit
@@ -25,7 +26,7 @@ class SgangsController < ApplicationController
   # POST /sgangs or /sgangs.json
   def create
     # @sgang = Sgang.new(sgang_params)
-    @sgang = current_user.sgang.build(sgang_params)
+    @sgang = current_user.sgangs.build(sgang_params)
 
     respond_to do |format|
       if @sgang.save
